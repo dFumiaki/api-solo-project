@@ -1,0 +1,15 @@
+<%- include('../../partials/header'); %>
+      <dl>
+        <dt>Name:</dt><dd><%= `${customer.lastName}, ${customer.firstName}` %></dd>
+        <dt>Email:</dt><dd><%= customer.email %></dd>
+        <dt>Address:</dt>
+        <dd><%= customer.address %></dd>
+        <dt>City</dt>
+        <dd><%= customer.city %></dd>
+        <dt>Region</dt>
+        <dd><%= customer.region %></dd>
+        <dt>Postal Code</dt>
+        <dd><%= customer.postalCode %></dd>
+        <dt>Country:</dt><dd><%= customer.country %></dd>
+      </dl>
+<%- include('../../partials/footer'); %>

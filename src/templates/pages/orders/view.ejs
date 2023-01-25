@@ -1,0 +1,31 @@
+<%- include('../../partials/header'); %>
+<h2>Order Information</h2>
+<% if (order) { %>
+    <dl>
+        <dt>Placed On:</dt><dd><%= order.datePlaced?.toISOString().slice(0,10); %></dd>
+        <dt>Shipped On:</dt><dd><%= order.dateShipped?.toISOString().slice(0,10) || "NOT SHIPPED"; %></dd>
+        <dt>Customer Name:</dt><dd><%= order.customerLast %>, <%= order.customerFirst %> [<a href="/customers/view/<%= order.customerId %>">View</a>]</dd>
+        <dt>Customer Location:</dt><dd><%= order.customerCountry %></dd>
+    </dl>
+    <% if (order.items) { %>
+    <table>
+        <thead>
+            <th scope="col">Product</th>
+            <th scope="col">Price</th>
+            <th scope="col"><abbr title="quantity">Qty.</abbr></th>
+        </thead>
+        <tbody>
+        <% for (let item of order.items) { %>
+            <tr>
+                <td><%= item.productDescription %></td>
+                <td><%= item.productPrice %></td>
+                <td><%= item.quantity %></td>
+            </tr>
+        <% } %>
+        </tbody>
+    </table>
+    <% } %>
+<% } else { %>
+<p>Order doesn't exist</p>
+<% } %>
+<%- include('../../partials/footer'); %>

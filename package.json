@@ -1,0 +1,40 @@
+{
+  "name": "sprint.database-part-2.1",
+  "version": "1.0.0",
+  "description": "A project for learning how to interact with a database using a query builder.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --exit && npm run lint",
+    "start": "node ./src/server.js",
+    "dev": "nodemon ./src/server.js",
+    "lint": "eslint --fix --ext .js .",
+    "migrate": "knex migrate:latest",
+    "seed": "knex seed:run"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  },
+  "author": "Code Chrysalis",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.3",
+    "knex": "^1.0.3",
+    "pg": "^8.7.3"
+  },
+  "devDependencies": {
+    "chai": "^4.3.6",
+    "eslint": "^8.10.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-config-problems": "^7.0.1",
+    "eslint-plugin-prettier": "^4.2.1",
+    "husky": "^8.0.1",
+    "mocha": "^9.2.1",
+    "prettier": "^2.7.1",
+    "pretty-quick": "^3.1.3"
+  }
+}

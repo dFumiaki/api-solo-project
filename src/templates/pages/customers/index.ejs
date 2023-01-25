@@ -1,0 +1,26 @@
+<%- include('../../partials/header'); %>
+      <h2>Customers</h2>
+      <table cellspacing="0">
+        <thead>
+          <th scope="col">ID</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">First Name</th>
+          <th scope="col">Country</th>
+          <th></th>
+          <th></th>
+        </thead>
+        <tbody>
+          <% customers.forEach(function (customer) { %>
+            <tr>
+              <td><%= customer.id %></td>
+              <td><%= customer.lastName %></td>
+              <td><%= customer.firstName %></td>
+              <td><%= customer.country %></td>
+              <td><a href="/customers/edit/<%= customer.id %>">Edit</a></td>
+              <td><a href="/customers/view/<%= customer.id %>">View</a></td>
+            </tr>
+          <% }); %>
+        </tbody>
+      </table>
+      <a href="/customers/new">Add New Customer</a>
+<%- include('../../partials/footer'); %>

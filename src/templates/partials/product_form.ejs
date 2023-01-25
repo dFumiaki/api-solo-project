@@ -1,0 +1,25 @@
+<form action="/products/save" method="POST">
+  <input type="hidden" name="id" value="<%= product?.id %>" />
+  <fieldset name="name">
+    <legend>Product</legend>
+    <div class="form-field">
+      <label for="description">Description</label>
+      <input id="description" name="description" type="text" value="<%= product?.description %>" />
+    </div>
+    <div class="form-field">
+      <label for="costPrice">Cost Price</label>
+      <input id="costPrice" name="costPrice" type="text" value="<%= product?.costPrice %>" />
+    </div>
+    <div class="form-field">
+      <label for="sellPrice">Sell Price</label>
+      <input id="sellPrice" name="sellPrice" type="text" value="<%= product?.sellPrice %>" />
+    </div>
+    <div class="form-field">
+      <label for="stock">Stock</label>
+      <input id="stock" name="stock" type="number" value="<%= product?.stock || 0 %>" />
+    </div>
+  </fieldset>
+  <button type="submit">
+    <%= buttonText %>
+  </button>
+</form>
