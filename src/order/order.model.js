@@ -22,8 +22,16 @@ module.exports = {
    * @return {Promise<Array>} A promise that resolves to an array of orders.
    */
   getAll(limit = 100) {
-
     // YOUR CODE HERE
+    return knex
+      .select({
+        id: "id",
+        customerID: "customer_id",
+        datePlaced: "date_placed",
+        dateShipped: "date_shipped",
+      })
+      .from(ORDER_TABLE)
+      .limit(limit);
   },
 
   /**
@@ -32,8 +40,17 @@ module.exports = {
    * @return {Promise<Object>} A promise that resolves to the order that matches the id.
    */
   getById(id) {
-
     // YOUR CODE HERE
+    return knex
+      .select({
+        id: "id",
+        customerID: "customer_id",
+        datePlaced: "date_placed",
+        dateShipped: "date_shipped",
+      })
+      .from(ORDER_TABLE)
+      .where({ id: id })
+      .first();
   },
 
   /**
@@ -45,6 +62,7 @@ module.exports = {
     validateRequired(validateProps(order));
 
     // YOUR CODE HERE
+    return knex(ORDER_TABLE).insert(order);
   },
 
   /**
@@ -57,5 +75,9 @@ module.exports = {
     validateProps(order);
 
     // YOUR CODE HERE
+    return knex(ORDER_TABLE)
+      .update(order, ["id"])
+      .where({ id: id })
+      .then((results) => results[0].id);
   },
 };

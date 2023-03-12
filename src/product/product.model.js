@@ -24,6 +24,16 @@ module.exports = {
    */
   getAll(limit = 100) {
     // YOUR CODE HERE
+    return knex
+      .select({
+        id: "id",
+        description: "description",
+        costPrice: "cost_price",
+        sellPrice: "sell_price",
+        stock: "stock",
+      })
+      .from(PRODUCT_TABLE)
+      .limit(limit);
   },
 
   /**
@@ -33,6 +43,19 @@ module.exports = {
    */
   getById(id) {
     // YOUR CODE HERE
+    return knex
+      .select({
+        id: "id",
+        description: "description",
+        costPrice: "cost_price",
+        sellPrice: "sell_price",
+        stock: "stock",
+      })
+      .from(PRODUCT_TABLE)
+      .where({
+        id: id,
+      })
+      .first();
   },
 
   /**
@@ -44,6 +67,7 @@ module.exports = {
     validateRequired(validateProps(product));
 
     // YOUR CODE HERE
+    return knex.insert(product).into(PRODUCT_TABLE);
   },
 
   /**
@@ -56,5 +80,9 @@ module.exports = {
     validateProps(product);
 
     // YOUR CODE HERE
+    return knex(PRODUCT_TABLE)
+      .update(product, ["id"])
+      .where({ id: id })
+      .then((results) => results[0].id);
   },
 };

@@ -67,6 +67,7 @@ module.exports = {
   create(customer) {
     validateRequired(validateProps(customer));
     // YOUR CODE HERE
+    return knex.insert(customer).into(CUSTOMER_TABLE);
   },
 
   /**
@@ -78,5 +79,9 @@ module.exports = {
     validateProps(customer);
 
     // YOUR CODE HERE
+    return knex(CUSTOMER_TABLE)
+      .update(customer, ["id"])
+      .where({ id: id })
+      .then((results) => results[0].id);
   },
 };
